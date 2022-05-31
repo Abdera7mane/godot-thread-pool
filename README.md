@@ -12,7 +12,7 @@ Sending a task to the thread pool is fairly easy via the `submit_task` method, w
 * `function` a [FuncRef](https://docs.godotengine.org/en/3.5/classes/class_funcref.html).
 * `arguments` an array of arguments to pass to `function`. [*optional*]
 
-The task will then be pushed into a queue until a thread claim it and execute it.
+The task will then be pushed into a queue until a thread claims it and executes it.
 
 `sumbit_task` is a [coroutine](https://docs.godotengine.org/en/3.5/tutorials/scripting/gdscript/gdscript_basics.html#coroutines-with-yield), you can use `yield()` to wait for task completion or retrieving the return value.
 
@@ -27,7 +27,7 @@ func example() -> void:
 	thread_pool.submit_task(funcref(self, "some_task1"))
 
 	# wait for the task to finish
-	var state = thread_pool.submit_task(funcref(self, "some_task2", [2, 5])
+	var state = thread_pool.submit_task(funcref(self, "some_task2"), [2, 5])
 	var result: int = yield(state, "completed")
 
 	assert(result == 7)
